@@ -1,0 +1,2 @@
+# mail
+springboot-mail
