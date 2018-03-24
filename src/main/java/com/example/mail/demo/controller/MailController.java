@@ -17,22 +17,18 @@ public class MailController {
 
     @ResponseBody
     @RequestMapping("/send")
-    public Object sendEmail() {
-
-        String content =  "<html>\n" +
-                "<body>\n" +
-                "    <h3>hello world ! 这是一封Html邮件!</h3>\n" +
-                "</body>\n" +
-                "</html>";
+    public Object sendEmail(String content) {
         try {
             final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
             message.setFrom("2286824491@qq.com");
-            message.setTo("2286824491@qq.com");
+            message.setTo("635368604@qq.com");
             message.setSubject("测试邮件主题");
-            message.setText(content,true);
-            this.mailSender.send(mimeMessage);
+            message.setText(content);
 
+           // message.setText("这个是邮件的所有目录",true)  ;  // html格式
+
+            this.mailSender.send(mimeMessage);
 
             return "sucesss";
         } catch (Exception ex) {
